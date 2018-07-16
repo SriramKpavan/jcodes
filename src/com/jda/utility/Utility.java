@@ -27,6 +27,11 @@ public class Utility {
 		return n;
 	}
 
+	public double takeInputDouble() {
+		double n = scanner.nextDouble();
+		return n;
+	}
+	
 	public String replaceString(String template, String name) {
 		template = template.replace("<<UserName>>", name);
 		return template;
@@ -252,7 +257,8 @@ public <T extends Comparable<T>> void genBubbleSort(T[] array){
 	for(int i = 0; i<array.length; i++)
 		System.out.print(array[i] + " ");
 }
-	
+
+//To find out the minimum number of notes returned to give a change of ch
 int n = 0, t =0;
 public void minimumNotes(int ch, int a[]){
 	int k = a.length, buff = 0;
@@ -269,5 +275,70 @@ public void minimumNotes(int ch, int a[]){
 		minimumNotes(ch, a);	
 	else
 		System.out.print(n);	
+}
+
+//To convert celsius into fahrenheit and viceversa
+public static void temparatureconversion(double t, int c) {
+	double finalt;
+	switch(c) {
+	case 1:
+		finalt = ((t*9)/5) + 32;
+		System.out.println(t + "C in Fahrenheit is " + finalt);
+		break;
+		
+	case 2:
+			finalt = (t-32)*5/9;
+			System.out.println(t + "F in Celsius is " + finalt);
+	}
+	
+}
+
+//To find out the day with the date dd/mm/yy
+public static void dayofweek(int d, int m, int y) {
+	String day[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+	int y0 = y - ((14 - m)/12);
+	int x = y0 + (y0/4) - (y0/100) + (y0/400);
+	int m0 = m + (12 *((14-m)/12)) - 2 ;
+	int d0 = (d + x + ((31*m0)/12)) %7;
+	System.out.println(d + "/" + m + "/" + y + " is a " + day[d0]);
+}
+
+//To find out the monthly payment to be paid to clear a loan of p in y years at the rate of r
+public static void monthlypayment(int p, int y, double r) {
+	double payment, rate, month;
+	rate = (r/12)/100;
+	month = 12 * y;
+	payment = (p*rate)/(1-(Math.pow((1+rate), (-month))));
+	System.out.println("The monthly payment for the credentials is " + payment);
+}
+
+//To find out the square root of a positive
+public static void sqrt(double n) {
+	double t = n;
+	long epsilon = (long) Math.pow(10, -13);
+	while(Math.abs((t - (n/t))) > (epsilon*t))
+		t = ((n/t) + t)/2;
+	System.out.println("The square root of " + n + " is " + t);
+}
+
+//To convert a decimal number n to binary 
+public static int toBinary(int n){
+	int p = 0, k, temp = n;
+	while(temp>0) {
+		k = (int) Math.floor((Math.log(temp)/Math.log(2)));
+		p+= (int)Math.pow(10, k);
+		temp-= (int)Math.pow(2, k);
+	}
+	return p;
+}
+
+public int swapNibbles(int y) {
+	y = ((y%10000)*10000) + (y/10000);
+	int x = 0;
+	for(int i =0; i<8; i++) {
+		x+= (y%10)*Math.pow(2, i); 
+		y = y/10;
+	}
+	return x;
 }
 }
