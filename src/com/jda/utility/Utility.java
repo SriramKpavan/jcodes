@@ -145,8 +145,8 @@ public class Utility {
 	//To check if string x and y are anagrams
 	public boolean anagramCheck(String x, String y){
 		char s1[], s2[], temp;
-		x =  x.replaceAll(" ", "");
-		y =  y.replaceAll(" ", "");
+		x =  x.toLowerCase().replaceAll(" ", "");
+		y =  y.toLowerCase().replaceAll(" ", "");
 		int n1 = x.length(), n2 = y.length(), k=0;
 		if(n1 == n2){
 			s1 = x.toCharArray();
@@ -210,7 +210,7 @@ public class Utility {
 	//Generic binary search method so that we can use it for integer and string
 	public  < T extends Comparable <T> > void genBinarySearch ( T[] array, T  toFind ){
 		
-		int left = 0, right = array.length;
+		int left = 0, right = array.length - 1;
 		while(left <= right){
 			int mid = left + (right-left)/2;
 			if(array[mid].compareTo(toFind) == 0){

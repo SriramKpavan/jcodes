@@ -15,12 +15,11 @@ public class ReadFromFile {
 		String st, search;
 		Utility utility = new Utility();
 		search = utility.takeInputString();
-		while((st = br.readLine()) != null) {
+		if((st = br.readLine()) != null) {
 			String[] s = st.split(","); 
 			Arrays.sort(s);
 			utility.genBinarySearch(s, search);
 		}
-		
 	}
 
 }

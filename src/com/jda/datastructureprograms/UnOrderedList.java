@@ -1,15 +1,15 @@
 package com.jda.datastructureprograms;
 
 import java.io.*;
-import java.util.*;
 
+import com.jda.utility.LinkedList;
 import com.jda.utility.Utility;
 
 public class UnOrderedList {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-
+		
 		File file = new File("C:\\Users\\1022775\\Documents\\JL.txt");
 		Utility utility = new Utility();
 		String st;
@@ -17,15 +17,13 @@ public class UnOrderedList {
 		LinkedList<String> object = new LinkedList<String>();
 		System.out.println("Give a word you want to search");
 		String search = utility.takeInputString();
-		while((st = br.readLine()) != null)
-			object.add(st);
-		boolean condition = object.contains(search);
-		if(condition)
-			object.remove(search);
-		else 
-			object.add(search);
-		System.out.println(object);
-		
+		String[] array = null;
+		while((st = br.readLine()) != null) 
+			array = st.split(",");
+		for(int i = 0; i<array.length; i++)
+			object.add(array[i]);
+		object.removeAt(search);
+		object.printList();
 		
 	}
 

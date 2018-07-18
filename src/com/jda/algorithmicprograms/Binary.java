@@ -14,7 +14,5 @@ public class Binary {
 		int s = utility.swapNibbles(binary);
 		System.out.println(s);
 	}
-
-
 	
 }
