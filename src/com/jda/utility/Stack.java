@@ -8,8 +8,8 @@ public class Stack<T extends Comparable<T>> {
 		link.add(key);
 	}
 	
-	public void pop() {
-		link.remove();
+	public T pop() {
+		return link.remove();
 	}
 	
 	public boolean isEmpty() {

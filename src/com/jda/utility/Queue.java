@@ -1,15 +1,40 @@
 package com.jda.utility;
 
 public class Queue<T extends Comparable<T>> {
-	
-	LinkedList<T> link = new LinkedList<T>();
-	Deque<T> deque = new Deque<T>();
-	
-	public void enqueue(T key) {
-		link.add(key);
+	public Qnode<T> front = null;
+	public Qnode<T> rear = null;
+
+	public static class Qnode<S> {
+	public S value;
+	public Qnode<S> next;
+        public String purpose=null;
+	Qnode(S data) {
+	value = data;
+	next = null;
+	}
 	}
 
-	public T dequeue() {
-		return deque.removeFront();
+	public Queue() {
+	rear = front = null;
+	}
+
+	public void enqueue(T data) {
+	Qnode<T> newnode = new Qnode<T>(data);
+	if (rear == null) {
+	rear = front = newnode;
+	return;
+	}
+	rear.next = newnode;
+	rear = newnode;
+	}
+
+	public Qnode<T> dequeue() {
+	if (front == null)
+	return null;
+	Qnode<T> temp=front;
+	front = front.next;
+	if (front == null)
+	rear = null;
+	return temp;
 	}
 }

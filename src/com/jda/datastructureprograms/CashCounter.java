@@ -13,18 +13,18 @@ public class CashCounter {
 		int balance = utility.takeInputInteger();
 		System.out.println("Enter the number of people in the queue");
 		int transactions = utility.takeInputInteger();
-		Queue<Integer> queue = new Queue<Integer>();
+		QueueSeparate<Integer> queue = new QueueSeparate<Integer>();
 		int[] array = new int[transactions];
-		for(int i = 0; i<= transactions; i++) {
+		for(int i = 0; i< transactions; i++) {
 			System.out.println("Give 1 for deposit and 0 for withdrawal");
 			array[i] = utility.takeInputInteger();
 			System.out.println("The amount to be transacted");
 			int temp = utility.takeInputInteger();
 			queue.enqueue(temp);
-			System.out.println(queue.dequeue());
+			//System.out.println(queue.dequeue());
 		}
 		for(int i = 0; i< transactions; i++) {
-		    int temp = queue.dequeue(); 
+		    int temp = queue.dequeue().value; 
 			if(array[i] == 1)
 				balance+= temp;
 			else if(array[i] == 0 && balance < temp) 
