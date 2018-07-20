@@ -2,9 +2,7 @@ package com.jda.datastructureprograms;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Arrays;
 
 import com.jda.utility.LinkedList;
 import com.jda.utility.Utility;
@@ -15,7 +13,6 @@ public class OrderedList {
 	{
 	Utility utility = new Utility();
 	String s;
-	int[] array;
 	File file = new File("C:\\Users\\1022775\\Documents\\Numbers.txt");
 	BufferedReader br = new BufferedReader(new FileReader(file));
 	LinkedList<Integer> num = new LinkedList<Integer>();
@@ -28,5 +25,6 @@ public class OrderedList {
 	}
 	num.orderedRemoveAt(find);
 	num.printList();
+	br.close();
 	}
 }

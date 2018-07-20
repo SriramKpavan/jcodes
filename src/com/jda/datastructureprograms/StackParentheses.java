@@ -18,7 +18,7 @@ public class StackParentheses {
 			if(a[i] == '(')
 				st.push('(');
 			else if(a[i] == ')' && !(st.isEmpty()))
-				st.pop('(');
+				st.pop();
 			else if(a[i] == ')' && st.isEmpty())
 				check = false;
 		}

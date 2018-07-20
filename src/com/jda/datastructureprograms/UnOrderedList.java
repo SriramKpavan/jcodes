@@ -24,7 +24,7 @@ public class UnOrderedList {
 			object.add(array[i]);
 		object.removeAt(search);
 		object.printList();
-		
+		br.close();
 	}
 
 }

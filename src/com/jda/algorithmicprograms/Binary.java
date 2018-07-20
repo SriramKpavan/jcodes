@@ -10,7 +10,7 @@ public class Binary {
 		Utility utility = new Utility();
 		System.out.println("Give a number");
 		int num = utility.takeInputInteger();
-		int binary = utility.toBinary(num);
+		int binary = Utility.toBinary(num);
 		int s = utility.swapNibbles(binary);
 		System.out.println(s);
 	}

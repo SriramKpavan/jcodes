@@ -4,22 +4,13 @@ public class LinkedList<T extends Comparable<T>> {
 
 	public Node<T> head = null;
 
-	public static class Node<S> {
-		public S value;
-		public Node<S> next;
-
-		Node(S data) {
-			value = data;
-			next = null;
-		}
-	}
-
 	public T remove() {
 		Node<T> temp = head;
 		if (temp != null) {
 			head = head.next;
 			return temp.value;
-		} else {
+		} 
+		else {
 			temp = null;
 			return null;
 		}
@@ -116,7 +107,7 @@ public class LinkedList<T extends Comparable<T>> {
 	public void printList() {
 		Node<T> temp = head;
 		while (temp != null) {
-			System.out.println(temp.value);
+			System.out.print(temp.value + " ");
 			temp = temp.next;
 		}
 	}
