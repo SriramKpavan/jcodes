@@ -12,7 +12,9 @@ public class DayOfWeek {
 		int date = utility.takeInputInteger();
 		int month = utility.takeInputInteger();
 		int year = utility.takeInputInteger();
-		utility.dayofweek(date, month, year);
+		int d = Utility.dayofweek(date, month, year);
+		String day[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+		System.out.println(date + "/" + month + "/" + year + " is a " + day[d]);
 	}
 
 	

@@ -4,6 +4,7 @@ import com.jda.utility.Utility;
 
 public class BTSNumber {
 
+	static long modulo = 100000007;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -19,9 +20,9 @@ public class BTSNumber {
 
 	public static long catalan(int n) {
 		// TODO Auto-generated method stub
+		long result = 0;
 		if(n <=1)
 			return 1;
-		long result = 0;
 		for(int i =0; i<n; i++)
 			result += catalan(i)*catalan(n-i-1);
 		return result;

@@ -294,13 +294,12 @@ public static void temparatureconversion(double t, int c) {
 }
 
 //To find out the day with the date dd/mm/yy
-public static void dayofweek(int d, int m, int y) {
-	String day[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+public static int dayofweek(int d, int m, int y) {
 	int y0 = y - ((14 - m)/12);
 	int x = y0 + (y0/4) - (y0/100) + (y0/400);
 	int m0 = m + (12 *((14-m)/12)) - 2 ;
 	int d0 = (d + x + ((31*m0)/12)) %7;
-	System.out.println(d + "/" + m + "/" + y + " is a " + day[d0]);
+	return d0;
 }
 
 //To find out the monthly payment to be paid to clear a loan of p in y years at the rate of r
@@ -340,5 +339,16 @@ public int swapNibbles(int y) {
 		y = y/10;
 	}
 	return x;
+}
+
+public int numberOfDays(int month, int year) {
+	if(leapYearCheck(year) && month == 2)
+		return 29;
+	else if(month == 2 && !(leapYearCheck(year)))
+		return 28;
+	else if(((month < 8) && !(month % 2 ==0)) || ((month > 7) && (month%2 == 0)) )
+		return 31;
+	else
+		return 30;
 }
 }

@@ -1,7 +1,6 @@
 package com.jda.datastructureprograms;
 
 import com.jda.utility.*;
-import com.jda.utility.QueueSeparate.Qnode;
 
 public class CashCounter {
 
@@ -13,7 +12,7 @@ public class CashCounter {
 		int balance = utility.takeInputInteger();
 		System.out.println("Enter the number of people in the queue");
 		int transactions = utility.takeInputInteger();
-		QueueSeparate<Integer> queue = new QueueSeparate<Integer>();
+		Queue<Integer> queue = new Queue<Integer>();
 		int[] array = new int[transactions];
 		for(int i = 0; i< transactions; i++) {
 			System.out.println("Give 1 for deposit and 0 for withdrawal");
@@ -21,7 +20,6 @@ public class CashCounter {
 			System.out.println("The amount to be transacted");
 			int temp = utility.takeInputInteger();
 			queue.enqueue(temp);
-			//System.out.println(queue.dequeue());
 		}
 		for(int i = 0; i< transactions; i++) {
 		    int temp = queue.dequeue().value; 

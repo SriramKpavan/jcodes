@@ -8,12 +8,8 @@ public class PrimeNumbersInRanges {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		int t = 0;
-		for(int i = 0; i< 10; i++) {
-		int	temp = numOfPrimes((i*100), ((i+1)*100));
-		if(temp > t)
-			t = temp;	
-		}
+		int t = maxPrimes(1000);
+		System.out.println(t);
 		int[][] array = new int[10][t];
 		int k;
 		for(int i = 0; i<10; i++) {
@@ -39,6 +35,17 @@ public class PrimeNumbersInRanges {
 				count++;
 		}
 		return count;
+	}
+	
+	public static int maxPrimes(int range) {
+		int k = range/100;
+		int t =0;
+		for(int i = 0; i< k; i++) {
+			int	temp = numOfPrimes((i*100), ((i+1)*100));
+			if(temp > t)
+				t = temp;	
+			}
+		return t;
 	}
 
 }

@@ -17,15 +17,7 @@ public class Calender {
 		int m0 = month + (12 *((14-month)/12)) - 2 ;
 		int d0 = (day + x + ((31*m0)/12)) %7;
 		System.out.println(d0);
-		int d1;
-		if(utility.leapYearCheck(year) && month == 2)
-			d1 = 29;
-		else if(month == 2 && !(utility.leapYearCheck(year)))
-			d1 = 28;
-		else if(((month < 8) && !(month % 2 ==0)) || ((month > 7) && (month%2 == 0)) )
-			d1 = 31;
-		else
-			d1 = 30;
+		int d1 = utility.numberOfDays(month, year);
 		int[][] array = new int[6][7];
 		String monthArray[] = {"Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
 		System.out.println(monthArray[month-1] + " " + year);
