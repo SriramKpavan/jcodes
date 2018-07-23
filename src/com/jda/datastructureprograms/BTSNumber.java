@@ -24,7 +24,7 @@ public class BTSNumber {
 		if(n <=1)
 			return 1;
 		for(int i =0; i<n; i++)
-			result += catalan(i)*catalan(n-i-1);
+			result += ((catalan(i)%modulo)*(catalan(n-i-1)%modulo))%modulo;
 		return result;
 	}
 }
