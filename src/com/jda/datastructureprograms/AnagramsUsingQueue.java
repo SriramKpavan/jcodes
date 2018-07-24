@@ -22,7 +22,7 @@ public class AnagramsUsingQueue {
 			}
 		}
 	for(int i =0; i<counter; i++) {
-		System.out.print(queue.dequeue().value + " " + queue.dequeue().value);
+		System.out.print(queue.dequeue() + " " + queue.dequeue());
 		System.out.println();
 	}
 	}

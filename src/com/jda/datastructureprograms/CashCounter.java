@@ -20,15 +20,15 @@ public class CashCounter {
 			System.out.println("The amount to be transacted");
 			int temp = utility.takeInputInteger();
 			queue.enqueue(temp);
-		}
-		for(int i = 0; i< transactions; i++) {
-		    int temp = queue.dequeue().value; 
-			if(array[i] == 1)
-				balance+= temp;
-			else if(array[i] == 0 && balance < temp) 
-				System.out.println("Not enough money");
-			else
-				balance-= temp;
+			 int temp2 = queue.dequeue(); 
+				if(array[i] == 1)
+					balance+= temp2;
+				else if(array[i] == 0 && balance < temp2) {
+					System.out.println("Not enough money");
+					return;
+				}	
+				else if(array[i] == 0)
+					balance-= temp2;
 		}
 		System.out.println("The remaining balance is " + balance);
 	}

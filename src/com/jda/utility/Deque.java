@@ -29,4 +29,8 @@ public class Deque<T extends Comparable<T>> {
 		fin.next = prev.next;
 		return key;		
 	}
+	
+	public boolean isEmpty() {
+		return link.isEmpty();
+	}
 }

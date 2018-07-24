@@ -27,9 +27,7 @@ public class SearchBySlot {
 					if(t%11 == i) 
 						num.orderedAdd(t);	
 				}
-				//num.printList();
 				hash.put(i, num);
-				//System.out.println();
 			}	
 		}
 		int remain = find % 11;

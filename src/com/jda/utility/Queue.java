@@ -28,13 +28,13 @@ public class Queue<T extends Comparable<T>> {
 	rear = newnode;
 	}
 
-	public Qnode<T> dequeue() {
+	public T dequeue() {
 	if (front == null)
 	return null;
 	Qnode<T> temp=front;
 	front = front.next;
 	if (front == null)
 	rear = null;
-	return temp;
+	return temp.value;
 	}
 }

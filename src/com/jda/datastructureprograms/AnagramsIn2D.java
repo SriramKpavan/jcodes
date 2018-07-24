@@ -36,8 +36,12 @@ public class AnagramsIn2D {
 			}
 		}
 		for(int i =0; i<11; i++) {
-			for(int j=0; j<50; j++)
-				System.out.print(array[i][j] + " ");
+			for(int j=0; j<50; j++) {
+				if(array[i][j] == 0)
+					System.out.print(" ");
+				else
+					System.out.print(array[i][j] + " ");
+			}
 			System.out.println();
 		}
 	

@@ -9,7 +9,6 @@ public class PrimeNumbersInRanges {
 		// TODO Auto-generated method stub
 
 		int t = maxPrimes(1000);
-		System.out.println(t);
 		int[][] array = new int[10][t];
 		int k;
 		for(int i = 0; i<10; i++) {

@@ -12,7 +12,7 @@ public class Inventory {
 	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
 
-		Object ob = new JSONParser().parse(new FileReader("C:\\Users\\1022775\\Documents\\Inventory.txt"));
+		Object ob = new JSONParser().parse(new FileReader("C:\\Users\\1022775\\Documents\\Inventory.json"));
 		JSONObject jo = (JSONObject) ob;
 		JSONArray ja =  (JSONArray) jo.get("Rice");
 		Iterator itr1 = ja.iterator();
@@ -24,6 +24,7 @@ public class Inventory {
 				Map.Entry pair = itr2.next();
 				System.out.println(pair.getKey() + " : " + pair.getValue());
 			}
+			System.out.println();
 		}
 		System.out.println();
 		

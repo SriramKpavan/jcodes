@@ -26,7 +26,7 @@ public class WeekAndWeekDay {
 					queue.enqueue(day);
 					day++;
 				}
-				int temp = queue.dequeue().value;
+				int temp = queue.dequeue();
 				if(temp == 0)
 					System.out.print("   ");
 				else if(temp < 10)
