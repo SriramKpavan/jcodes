@@ -1,7 +1,5 @@
 package com.jda.datastructureprograms;
 
-import java.util.ArrayList;
-
 import com.jda.utility.Utility;
 
 public class AnagramsIn2D {

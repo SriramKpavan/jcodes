@@ -43,5 +43,6 @@ public class SearchBySlot {
 				hash.get(i).printList();
 			System.out.println();
 		}
+		br.close();
 	}
 }

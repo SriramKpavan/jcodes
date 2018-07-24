@@ -22,7 +22,6 @@ public class PrimeNumberOperations {
 				System.out.println(a.get(i));
 		}
 			System.out.println("The anagram pair prime numbers are ");
-			int count = 0;
 			for(int i =0 ; i<a.size(); i++){
 				for(int k=0; k<i; k++){
 					s = Integer.toString(a.get(i));

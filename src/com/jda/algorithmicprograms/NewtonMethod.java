@@ -10,7 +10,7 @@ public class NewtonMethod {
 		Utility utility = new Utility();
 		System.out.println("Give a non negative number");
 		double c = utility.takeInputDouble();
-		utility.sqrt(c);
+		Utility.sqrt(c);
 	}
 
 	

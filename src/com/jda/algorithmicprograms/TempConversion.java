@@ -11,7 +11,7 @@ public class TempConversion {
 		System.out.println("Celsius to fahrenheit is 1 and the other is 2");
 		int choice = utility.takeInputInteger();
 		double degree = utility.takeInputDouble();
-		utility.temparatureconversion(degree, choice);
+		Utility.temparatureconversion(degree, choice);
 	}
 
 	
