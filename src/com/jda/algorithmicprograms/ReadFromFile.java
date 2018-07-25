@@ -20,6 +20,7 @@ public class ReadFromFile {
 			Arrays.sort(s);
 			utility.genBinarySearch(s, search);
 		}
+		br.close();
 	}
 
 }

@@ -10,7 +10,7 @@ public class BinaryConversion {
 		Utility utility = new Utility();
 		System.out.println("Give the number that needs to be converted into binary");
 		int num = utility.takeInputInteger();
-		int binary = utility.toBinary(num);
+		int binary = Utility.toBinary(num);
 		System.out.println(num + " in binary is " + binary);
 	}
 
