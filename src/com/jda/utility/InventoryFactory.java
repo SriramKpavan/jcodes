@@ -13,15 +13,13 @@ public class InventoryFactory {
 
 	
 	private String name;
-	private int weight;
-	private int price;
+	private double weight;
+	private double price;
 
-	public InventoryFactory() throws Exception, IOException, ParseException{
-		
-		Object ob = new JSONParser().parse(new FileReader("C:\\Users\\1022775\\Documents\\Inventory.json"));
-		JSONObject jo = (JSONObject) ob;
-		JSONArray ja = (JSONArray) jo.get("Rice");
-		
+	public InventoryFactory(String name, double weight, double price){
+		this.name = name;
+		this.weight = weight;
+		this.price = price;
 	}
 
 	public void setName(String name) {
@@ -32,19 +30,19 @@ public class InventoryFactory {
 		return name;
 	}
 	
-	public void setWeight(int weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 	
-	public int getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 	
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 }
