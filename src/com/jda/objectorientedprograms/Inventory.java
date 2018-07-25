@@ -12,7 +12,8 @@ public class Inventory {
 	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
 
-		Object ob = new JSONParser().parse(new FileReader("C:\\Users\\1022775\\Documents\\Inventory.json"));
+		File file = new File("Input\\Inventory.json");
+      Object ob = new JSONParser().parse(new FileReader(file));
 		JSONObject jo = (JSONObject) ob;
 		JSONArray ja =  (JSONArray) jo.get("Rice");
 		Iterator itr1 = ja.iterator();

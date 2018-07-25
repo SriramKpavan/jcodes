@@ -1,0 +1,20 @@
+{
+"Stock" : [
+{
+      "name" : "Berkshire",
+	  "number" : "5",
+	  "stockPrice" : "300000"
+	  },
+	  {
+	  "name" : "Walmart",
+	  "number" : "12",
+	  "stockPrice" : "17125"
+	  },
+	  {
+	  "name" : "Microsoft",
+	  "number" : "9",
+	  "stockPrice" : "23896"
+	  }
+	  ]
+}	  
+	  

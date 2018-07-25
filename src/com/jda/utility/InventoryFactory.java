@@ -1,14 +1,5 @@
 package com.jda.utility;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 public class InventoryFactory {
 
 	
@@ -44,5 +35,9 @@ public class InventoryFactory {
 	
 	public double getPrice() {
 		return price;
+	}
+	
+	public String toString(){
+		return getClass().getName()+"@"+Integer.toHexString(hashCode());
 	}
 }

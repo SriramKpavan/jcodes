@@ -1,18 +1,17 @@
 package com.jda.objectorientedprograms;
 
 import java.io.*;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import org.json.simple.*;
 import org.json.simple.parser.*;
 
 public class StockReport {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException  {
 		// TODO Auto-generated method stub
 
-		Object ob = new JSONParser().parse(new FileReader("C:\\Users\\1022775\\Documents\\StockRep.json"));
+		Object ob = new JSONParser().parse(new FileReader("Input\\StockRep.json"));
 		JSONObject jo = (JSONObject) ob;
 		JSONArray array = (JSONArray) jo.get("Stock");
 		int numOfShares = 0, price = 0, totalPrice = 0, finalPrice = 0;

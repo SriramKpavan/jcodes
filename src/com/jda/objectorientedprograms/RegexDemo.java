@@ -11,7 +11,7 @@ public class RegexDemo {
 
 		Utility utility = new Utility();
 		String name, fullName, num, date;
-		String line = "Hello <<name>>, We have your full name as <<full name>> in our system. your contact number is 91­xxxxxxxxxx.Please,let us know in case of any clarification Thank you BridgeLabz 01/01/2016";
+		String line = "Hello <<name>>, We have your full name as <<full name>> in our system. your contact number is 91-xxxxxxxxxx.Please,let us know in case of any clarification Thank you BridgeLabz 01/01/2016";
 		System.out.println("Give your name");
 		name = utility.takeInputString();
 		System.out.println("Give your fullname");
