@@ -22,7 +22,6 @@ public class StockReport {
 		//System.out.println();
 		while(itr1.hasNext()) {
 			itr2 = ((Map)itr1.next()).entrySet().iterator();
-			int i = 1;
 			while(itr2.hasNext()) {
 				Map.Entry pair = itr2.next();
 				System.out.println(pair.getKey() + " : " + pair.getValue());

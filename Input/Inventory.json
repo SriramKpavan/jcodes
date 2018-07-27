@@ -1,28 +1,29 @@
 {
 "Rice":[
 {
-        "name" : "Basmati"
-        "weight" : "38"
+        "name" : "Basmati",
+        "weight" : "38",
 		"pricePerKG" : "75"
 		},
 		{
-		"name" : "Sonamasur"
-		"weight" : "55"
+		"name" : "Sonamasur",
+		"weight" : "55",
 		"pricePerKG" : "55"
 		}
 		]
 		
-"Pulses" :
+"Pulses" :[
 		{
-		"name" : "Horsegram"
-		"weight" : "62"
+		"name" : "Horsegram",
+		"weight" : "62",
 		"pricePerKG" : "50"
 		}
-		
-"Wheat" :
+         ]		
+"Wheat" :[
 		{
-		"name" : "Ashirvad"
-		"weight" : "102"
+		"name" : "Ashirvad",
+		"weight" : "102",
 		"pricePerKG" : "86"
 		}
+		]
 }		

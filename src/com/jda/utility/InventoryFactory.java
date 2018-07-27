@@ -7,12 +7,6 @@ public class InventoryFactory {
 	private double weight;
 	private double price;
 
-	public InventoryFactory(String name, double weight, double price){
-		this.name = name;
-		this.weight = weight;
-		this.price = price;
-	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -38,6 +32,7 @@ public class InventoryFactory {
 	}
 	
 	public String toString(){
-		return getClass().getName()+"@"+Integer.toHexString(hashCode());
+		String x="\n{\n"+"Name :"+name+" \n" +"Weight :"+weight+" \n"+"Price Per Kg"+price+"\n"+"}\n";
+		return x;
 	}
 }
