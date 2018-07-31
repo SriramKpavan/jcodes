@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.LinkedList;
-import java.util.Map.Entry;
 import java.util.Stack;
 
 import org.json.simple.JSONArray;
@@ -14,6 +13,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.jda.utility.*;
+import com.jda.utility.Queue;
 
 public class StockAccount {
 
@@ -21,13 +21,14 @@ public class StockAccount {
 	static LinkedList<JSONObject> customerList = new LinkedList<JSONObject>();
 	static LinkedList<JSONObject> stockList = new LinkedList<JSONObject>();
 	static Stack<JSONObject> transactionStack = new Stack<JSONObject>();
+	static Queue<String> dateTime = new Queue<String>();
 	static Utility utility = new Utility();
-	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
+	public static void main(String[] args) throws Exception, IOException, ParseException {
 		// TODO Auto-generated method stub
 
 		int choice;
 		do {
-			System.out.println("1.Return value, 2.Sell shares to customer, 3.Save transaction to file, 4.Print transactions");
+			System.out.println("1.Return value, 2.Sell shares to customer, 3.Save transaction to file, 4.Print transactions, 5.Add Customer, 6.Delete a Customer");
 			choice = utility.takeInputInteger();
 			switch(choice) {
 			case 1:
@@ -50,10 +51,62 @@ public class StockAccount {
 			case 4:
 				printReport();
 				break;
+				
+			case 5:
+				addCustomer();
+				break;
+				
+			case 6:
+				deleteCustomer();
+				break;
 			}
 		}
 		while(choice != 0);
 		
+	}
+
+	public static void deleteCustomer() throws Exception{
+		// TODO Auto-generated method stub
+		utility.takeInputString();
+		System.out.println("Give the name of the customer you want to delete");
+		String name = utility.takeInputString();
+		JSONArray array = readCustomerFile();
+		for(int i = 0; i<customerList.size(); i++) {
+			JSONObject object = customerList.get(i);
+			if(object.get("name").equals(name)) {
+				customerList.remove(object);
+				break;
+			}	
+		}
+		JSONObject jo = new JSONObject();
+		jo.put("Customer", customerList);
+		PrintWriter pw = new PrintWriter("Input//CustomerInfo.json");
+        pw.write(jo.toJSONString());
+        pw.flush();
+        pw.close();
+	}
+
+	public static void addCustomer() throws Exception {
+		// TODO Auto-generated method stub
+		utility.takeInputString();
+		System.out.println("Give the name of the customer you want to add");
+		String name = utility.takeInputString();
+		System.out.println("Give the amount of money with the customer");
+		String amount = utility.takeInputString();
+		System.out.println("Give the contact number of the customer");
+		String contact = utility.takeInputString();
+		JSONObject object = new JSONObject();
+		object.put("name", name);
+		object.put("investment", amount);
+		object.put("contact", contact);
+		customerList.add(object);
+		
+		JSONObject jo = new JSONObject();
+		jo.put("Customer", customerList);
+		PrintWriter pw = new PrintWriter("Input//CustomerInfo.json");
+        pw.write(jo.toJSONString());
+        pw.flush();
+        pw.close();
 	}
 
 	public static JSONArray readCustomerFile() throws FileNotFoundException, IOException, ParseException {
@@ -75,7 +128,6 @@ public class StockAccount {
 	//total value of account
 	public static Double valueOf() throws FileNotFoundException, IOException, ParseException {
 		JSONArray stockArray = readStockFile();
-		//Iterator itr1 = stockArray.iterator(), itr2;
 		double value = 0, totalValue = 0;
 		for(int i =0; i< stockArray.size(); i++) {
 			JSONObject object = (JSONObject) stockArray.get(i);
@@ -97,7 +149,6 @@ public class StockAccount {
 		for(int i =0; i<stockArray.size(); i++) {
 			JSONObject obj = (JSONObject) stockArray.get(i);
 			if(obj.get("type").equals(symbol)) {
-				LinkedHashMap m = new LinkedHashMap(2);
 				int price = Integer.parseInt((String) obj.get("price")) ;
 				double sharesPurchased = amount/price;
 				System.out.println(sharesPurchased);
@@ -108,7 +159,7 @@ public class StockAccount {
 					for(int j =0; j< customerArray.size(); j++) {
 						JSONObject temp = (JSONObject) customerArray.get(j);
 						if(temp.get("name").equals(name)) {
-							m.put("CustomerName", name);
+							transaction.put("CustomerName", name);
 							int buffer = Integer.parseInt((String) temp.get("investment")) ;
 							buffer = buffer - amount;
 							temp.put("investment", Integer.toString(buffer));
@@ -127,11 +178,13 @@ public class StockAccount {
 				temp -= sharesPurchased;
 				obj.put("sharesAvailable", Integer.toString(temp));
 				updateStocks(obj, i);
-				m.put("StockPurchased", symbol);
-				m.put("NumberOfShares", Double.toString(sharesPurchased));
-				m.put("Date", LocalDate.now().toString());
-				m.put("Time", LocalTime.now().toString());
-				transaction.put("recent",m);
+				transaction.put("StockPurchased", symbol);
+				transaction.put("NumberOfShares", Double.toString(sharesPurchased));
+				String date = LocalDate.now().toString();
+				String time = LocalTime.now().toString();
+				transaction.put("Date", date);
+				transaction.put("Time", time);
+				dateTime.enqueue(date+" " + time);
 			}
 
 		}
@@ -146,7 +199,7 @@ public class StockAccount {
 		JSONArray array = (JSONArray) jo.get("Transactions");
 		for(int i =0; i<array.size(); i++)
 			transactionStack.push((JSONObject) array.get(i));
-		transactionStack.push((JSONObject) transaction.get("recent"));
+		transactionStack.push((JSONObject) transaction);
 		jo1.put("Transactions", transactionStack);
 		PrintWriter pw = new PrintWriter(transactions);
         pw.write(jo1.toJSONString());
@@ -157,12 +210,6 @@ public class StockAccount {
 	//print a detailed report of stocks and values
 	public static void printReport() throws FileNotFoundException, IOException, ParseException {
 		JSONObject jo = new JSONObject();
-		/*jo = transactionStack.pop();
-		System.out.println("CustomerName : " + jo.get("CustomerName"));
-		System.out.println("StockPurchased : " + jo.get("StockPurchased"));
-		System.out.println("NumberOfShares : " + jo.get("NumberOfShares"));
-		System.out.println("Date : " + jo.get("Date"));
-		System.out.println("Time : " + jo.get("Time"));*/
 		JSONParser parser = new JSONParser();
 		jo = (JSONObject) parser.parse(new FileReader("Input\\Transactions.json"));
 		JSONArray ja = (JSONArray)jo.get("Transactions");
@@ -172,7 +219,7 @@ public class StockAccount {
 		System.out.println("NumberOfShares : " + object.get("NumberOfShares"));
 		System.out.println("Date : " + object.get("Date"));
 		System.out.println("Time : " + object.get("Time"));
-	}
+		}
 	
 	public static void updateCustomer(JSONObject obj, int k) throws FileNotFoundException, IOException, ParseException {
 		JSONArray array = readCustomerFile();

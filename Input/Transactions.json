@@ -1,1 +1,1 @@
-{"Transactions":[{"StockPurchased":"Berkshire","Time":"17:23:36.974","CustomerName":"Pavan","NumberOfShares":"1.0","Date":"2018-07-27"},null]}
+{"Transactions":[{"StockPurchased":"Berkshire","Time":"17:23:36.974","CustomerName":"Pavan","NumberOfShares":"1.0","Date":"2018-07-27"},{"StockPurchased":"Microsoft","Time":"17:34:20.096","CustomerName":"Pavan","Date":"2018-07-31"},{"StockPurchased":"Berkshire","Time":"17:35:55.127","CustomerName":"Pooja","NumberOfShares":"1.0","Date":"2018-07-31"}]}
