@@ -12,7 +12,7 @@ public class CouponNum {
 		for(int j=0; j<N; j++)
 			a[j] = j;
 		while(true){
-			i = normalise(N);
+			i = Utility.normalise(N);
 			count++;
 			System.out.println(i);
 			if(i == a[i]){
@@ -25,11 +25,6 @@ public class CouponNum {
 			}
 			}
 	}
-
-	public static int normalise(int n ){
-		int k = (int) (n*(Math.random()));
-		return k;
-		}
 	
 	
 }

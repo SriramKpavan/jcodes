@@ -293,6 +293,12 @@ public static void temparatureconversion(double t, int c) {
 	
 }
 
+//To normalise the math.random function for n number of values
+public static int normalise(int n ){
+	int k = (int) (n*(Math.random()));
+	return k;
+	}
+
 //To find out the day with the date dd/mm/yy
 public static int dayofweek(int d, int m, int y) {
 	int y0 = y - ((14 - m)/12);
@@ -350,5 +356,39 @@ public int numberOfDays(int month, int year) {
 		return 31;
 	else
 		return 30;
+}
+
+public static String[] cardSort(String[] array) {
+	int n = array.length;
+	int[] sort = new int[n];
+	for(int i = 0; i<n; i++) {
+		char[] temp = array[i].toCharArray();
+		if(temp[0] == 'A')
+			sort[i] = 14;
+		else if(temp[0] == 'K')
+			sort[i] = 13;
+		else if(temp[0] == 'Q')
+			sort[i] = 12;
+		else if(temp[0] == 'J')
+			sort[i] = 11;
+		else if(temp[0] == '1')
+			sort[i] = 10;
+		else 
+			sort[i] = temp[0] - '0';	
+	}
+	for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (sort[j] > sort[j+1])
+            {
+                int temp = sort[j];
+                sort[j] = sort[j+1];
+                sort[j+1] = temp;
+                String s = array[j];
+                array[j] = array[j+1];
+                array[j+1] = s;
+            }
+        }
+        }
+	return array;
 }
 }
